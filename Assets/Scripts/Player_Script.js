@@ -22,29 +22,24 @@ function Update () {
 
 	if(Input.GetAxis("Horizontal") > 0){
 	
-		transform.Translate(Vector3((-1) * speed * Time.deltaTime,0,0));
+		rigidbody.AddForce( -1000f,0f,0f );
+		//transform.Translate(Vector3((-1) * speed * Time.deltaTime,0,0));
 	
 	
 	}
 
 	if(Input.GetAxis("Horizontal") < 0){
-	
-		transform.Translate(Vector3(1 * speed * Time.deltaTime,0,0));
+		rigidbody.AddForce( 1000f,0f,0f );
+		//transform.Translate(Vector3(1 * speed * Time.deltaTime,0,0));
 	
 	
 	}
 
-	if(Input.GetAxis("Vertical") > 0 && Jumped == false){
+	if(Input.GetAxis("Vertical") > 0){
 	
 		
-		transform.Translate(Vector3(0, Jump_Speed * Time.deltaTime,0));
+		rigidbody.AddForce( 0f, 500f, 0f );
 	
-	
-	}
-	
-	if(Jumped == true){
-	
-	transform.Translate(Vector3(0,(-1) * fallspeed * Time.deltaTime,0));
 	
 	}
 	
@@ -82,11 +77,7 @@ function OnCollisionEnter(col: Collision){
 
 function OnCollisionExit(col: Collision){
 
-	
-Jumped = true;
-
-
-
+	Jumped = true;
 }
 
 
